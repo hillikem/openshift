@@ -10,5 +10,6 @@ spec:
     "name": "lab", 
     "type": "cnv-bridge", 
     "bridge": "br1", 
+    "vlan": 1450,
     "macspoofchk": true 
   }'
