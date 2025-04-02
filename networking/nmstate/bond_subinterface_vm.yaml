@@ -1,0 +1,39 @@
+# This configuration is used after the cluster is deployed
+# This configuration creates a VLAN subinterface for a bond network interface
+# This configuration creates a new Linux bridge for VM traffic and attaches the above bond subinterface to it
+
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: vm-br-ex-844
+spec:
+  nodeSelector:
+    kubevirt.enabled: 'true' 
+  desiredState:
+    interfaces:
+    - name: vm-br-ex-844
+      description: |-
+        A dedicated bridge for vm traffic
+      type: linux-bridge
+      state: up
+      mtu: 9000
+      ipv4:
+        enabled: false
+      bridge:
+        # allow-extra-patch-ports: true
+        options:
+          stp:
+            enabled: false
+        port:
+        - name: bond0.844
+    - name: bond0.844
+      type: vlan
+      state: up
+      mtu: 9000
+      vlan:
+        id: 844
+        base-iface: bond0
+      ipv4:
+        enabled: false
+      ipv6:
+        enabled: false
