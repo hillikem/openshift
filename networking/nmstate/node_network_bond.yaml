@@ -1,0 +1,59 @@
+# This configuration is used during installation of the cluster
+# This configuration creates a network bond with two member interfaces
+# This configuration is helpful for nodes which have only two NICs, as OpenShift will then attach the "br-ex" bridge used for the pod network to this bond
+
+
+apiVersion: agent-install.openshift.io/v1beta1
+kind: NMStateConfig
+metadata:
+  name: ocp-gpuaas01-13519
+  namespace:  ocp-gpuaas01
+  labels:
+    cluster-name: ocp-gpuaas01
+spec:
+  config:
+    interfaces:
+      - name: bond0.1245
+        type: vlan
+        state: up
+        mtu: 9000
+        vlan:
+          id: 1245
+          base-iface: bond0
+        ipv4:
+          dhcp: false
+          address:
+          - ip: 10.254.70.153
+            prefix-length: 27
+          enabled: true
+        ipv6:
+          enabled: false
+      - name: bond0
+        type: bond
+        mtu: 9000
+        link-aggregation:
+          mode: 802.3ad
+          options:
+            miimon: "140"
+          ports:
+            - ens6
+            - enp197s0
+        state: up
+    dns-resolver:
+      config:
+        search:
+          - wwtatc.ai
+        server:
+          - 10.255.0.1
+    routes:
+      config:
+        - destination: 0.0.0.0/0
+          next-hop-address: 10.254.70.129
+          next-hop-interface: bond0.1245
+          table-id: 254
+  interfaces:
+    - name: ens6
+      macAddress: 40:a6:b7:9f:1c:3c
+    - name: enp197s0
+      macAddress: 40:a6:b7:9f:1c:38
+ 
