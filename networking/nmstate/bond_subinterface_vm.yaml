@@ -1,6 +1,7 @@
 # This configuration is used after the cluster is deployed
 # This configuration creates a VLAN subinterface for a bond network interface
 # This configuration creates a new Linux bridge for VM traffic and attaches the above bond subinterface to it
+# Note that in this configuration, we are applying the VLAN tag, so when using a NetworkAttachmentDefinition pointing at this bridge, that NAD should not have a VLAN assigned
 
 apiVersion: nmstate.io/v1
 kind: NodeNetworkConfigurationPolicy
