@@ -1,0 +1,13 @@
+# This is a NodeNetworkConfigurationPolicy which creates a bridge mapping between the OVS bridge "ovs-br1" and the NetworkAttachmentDefinition "nad-vlan1450"
+
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ovs-br1-mapping-vlan1450
+spec:
+  desiredState:
+    ovn:
+      bridge-mappings:
+        - bridge: ovs-br1
+          localnet: nad-vlan1450
+          state: present
