@@ -1,3 +1,11 @@
+
+# This YAML file is a NetworkAttachmentDefinition for a secondary network interface for a pod
+# The topology is "localnet", which allows direct access to the northbound physical network
+# The name is "localnet-vlan1450", which identifies the name of the network
+#
+# The pod would add the following annotation "k8s.v1.cni.cncf.io/networks: nad-vlan1450"
+
+
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
