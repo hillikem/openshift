@@ -1,3 +1,5 @@
+# This is a NodeNetworkConfigurationPolicy which creates a new OVS bridge called "ovs-br1" and assigns the bond0 interface as a port
+
 apiVersion: nmstate.io/v1
 kind: NodeNetworkConfigurationPolicy
 metadata:
