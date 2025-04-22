@@ -1,0 +1,42 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  annotations:
+    nmstate.io/webhook-mutating-timestamp: '1744749247626454873'
+  creationTimestamp: '2025-04-15T19:46:32Z'
+  generation: 2
+  managedFields:
+    - apiVersion: nmstate.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          .: {}
+          'f:desiredState':
+            .: {}
+            'f:ovn':
+              .: {}
+              'f:bridge-mappings': {}
+      manager: Mozilla
+      operation: Update
+      time: '2025-04-15T20:34:07Z'
+    - apiVersion: nmstate.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:conditions': {}
+          'f:lastUnavailableNodeCountUpdate': {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: '2025-04-16T06:48:02Z'
+  name: ovs-br1-mapping-vlan1450
+  resourceVersion: '1761485'
+  uid: eff247df-4366-4f27-8d66-9acfa185ef37
+spec:
+  desiredState:
+    ovn:
+      bridge-mappings:
+        - bridge: ovs-br1
+          localnet: nad-vlan1450
+          state: present
