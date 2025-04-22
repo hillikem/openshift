@@ -1,0 +1,21 @@
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan1450
+  namespace: easytrade
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "localnet-vlan1450",
+      "type": "ovn-k8s-cni-overlay",
+      "topology": "localnet",
+      "subnets": "10.253.50.0/25",
+      "vlanID": 1450,
+      "mtu": 1500,
+      "netAttachDefName": "easytrade/nad-vlan1450"
+      "ipam": {
+        "type": "dhcp"
+      }
+    }
+
