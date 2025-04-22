@@ -21,7 +21,7 @@ spec:
       "subnets": "10.253.50.0/25",
       "vlanID": 1450,
       "mtu": 1500,
-      "netAttachDefName": "easytrade/nad-vlan1450"
+      "netAttachDefName": "easytrade/nad-vlan1450",
       "ipam": {
         "type": "dhcp"
       }
