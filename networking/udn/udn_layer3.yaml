@@ -1,0 +1,15 @@
+# This manifest creates a primary user defined network (UDN) using a Layer-3 topology
+# The UDN will use a supernet of 10.150.0.0/16, and each host will receive a /24 subnet from it
+
+apiVersion: k8s.ovn.org/v1
+kind: UserDefinedNetwork
+metadata:
+  name: udn-2-primary
+  namespace: my_namespace
+spec:
+  topology: Layer3
+  layer3:
+    role: Primary
+    subnets:
+      - cidr: 10.150.0.0/16
+        hostSubnet: 24
